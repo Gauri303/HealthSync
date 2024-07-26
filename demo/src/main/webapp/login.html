@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://kit.fontawesome.com/97ebdf5864.js" crossorigin="anonymous"></script>
+    <script>
+        function validateLogin() {
+            const email = document.querySelector('input[name="email"]');
+            const password = document.querySelector('input[name="password"]');
+
+            const user = JSON.parse(localStorage.getItem('user'));
+
+            if (!user || user.email !== email.value || user.password !== password.value) {
+                alert("Invalid email or password.");
+                return false;
+            }
+
+            alert("Login successful!");
+            window.location.href = "Homepage.html"; 
+            return false; 
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+
+        <form onsubmit="return validateLogin()">
+            <div class="form-group">
+                <input type="email" name="email" required>
+                <label for="email">Email</label>
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+
+            <div class="form-group">
+                <input type="password" name="password" required>
+                <label for="password">Password</label>
+                <i class="fa-solid fa-lock"></i>
+            </div>
+
+            <p><a href="#">Forget Password</a></p>
+
+            <input id="btn" type="submit" value="Login">
+
+            <p><a href="Register.html">Register Here!</a></p>
+
+        </form>
+    </div>
+</body>
+</html>
